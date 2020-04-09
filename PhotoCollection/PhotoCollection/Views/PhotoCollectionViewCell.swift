@@ -35,6 +35,8 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         nameLabel.text = photo.title
     }
     
+
+    
     private func setUpSubviews() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
