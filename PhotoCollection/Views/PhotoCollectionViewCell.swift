@@ -10,9 +10,8 @@ import UIKit
 
 class PhotoCollectionViewCell: UICollectionViewCell {
     
-    private var imageView = UIImageView()
-    private var nameLabel = UILabel()
-
+    private var imageView: UIImageView! // Changed these from creating an instance to just being containers.
+    private var nameLabel: UILabel!
     var photo: Photo? {
         didSet {
             updateViews()
@@ -34,10 +33,12 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         imageView.image = UIImage(data: photo.imageData)
         nameLabel.text = photo.title
     }
-    
+
 
     
     private func setUpSubviews() {
+        let imageView = UIImageView() // See below
+        self.imageView = imageView // Added these two lines to instantiate it here instead of doing it above.
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         addSubview(imageView)
@@ -85,6 +86,8 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.textAlignment = .center
         addSubview(nameLabel)
+        let nameLabel = UILabel() // See below
+        self.nameLabel = nameLabel // Added these lines with Rick and the gang.
         
         // Y
         nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 4).isActive = true
